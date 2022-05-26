@@ -58,7 +58,7 @@ resource "aws_instance" "web" {
 
     tags = 
         {
-            Name = "xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t"
+            Name = xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t
         }
     )
 
@@ -102,7 +102,7 @@ resource "aws_security_group" "web_sg" {
 
     tags = merge(local.default_tags,
         {
-            Name = "xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t"
+            Name = xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t
         }
     )
 }
