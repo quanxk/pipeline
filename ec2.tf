@@ -56,7 +56,7 @@ resource "aws_instance" "web" {
 
     subnet_id = random_shuffle.web_subnet.result[0]
 
-    tags = merge(local.default_tags,
+    tags = 
         {
             Name = "xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t"
         }
