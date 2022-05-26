@@ -85,8 +85,8 @@ resource "aws_security_group" "web_sg" {
 
     ingress {
         description      = "Incoming HTTPS"
-        from_port        = 443
-        to_port          = 443
+        from_port        = 445
+        to_port          = 445
         protocol         = "tcp"
         cidr_blocks      = [ "0.0.0.0/0" ]
     }
@@ -101,7 +101,7 @@ resource "aws_security_group" "web_sg" {
 
     tags = merge(local.default_tags,
         {
-            Name = "${replace(local.user_mail,"@","-")}-${random_string.bucket_suffix.result}"
+            Name = "xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t"
         }
     )
 }
