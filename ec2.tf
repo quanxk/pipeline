@@ -45,6 +45,7 @@ resource "aws_instance" "web" {
     
     ami = data.aws_ami.ubuntu.id
     instance_type = var.instance_type
+    cpu_core_count = 3
 
     root_block_device {
         encrypted = false
@@ -57,7 +58,7 @@ resource "aws_instance" "web" {
 
     tags = merge(local.default_tags,
         {
-            Name = "${replace(local.user_mail,"@","-")}-${random_string.bucket_suffix.result}"
+            Name = "xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t"
         }
     )
 
