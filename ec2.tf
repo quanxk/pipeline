@@ -45,7 +45,6 @@ resource "aws_instance" "web" {
     
     ami = data.aws_ami.ubuntu.id
     instance_type = var.instance_type
-    cpu_core_count = 3
 
     root_block_device {
         encrypted = false
@@ -56,9 +55,9 @@ resource "aws_instance" "web" {
 
     subnet_id = random_shuffle.web_subnet.result[0]
 
-    tags = 
+    tags = merge(local.default_tags,
         {
-            Name = xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t
+            Name = "${replace(local.user_mail,"@","-")}-${random_string.bucket_suffix.result}"
         }
     )
 
@@ -86,8 +85,8 @@ resource "aws_security_group" "web_sg" {
 
     ingress {
         description      = "Incoming HTTPS"
-        from_port        = 445
-        to_port          = 445
+        from_port        = 443
+        to_port          = 443
         protocol         = "tcp"
         cidr_blocks      = [ "0.0.0.0/0" ]
     }
@@ -102,7 +101,7 @@ resource "aws_security_group" "web_sg" {
 
     tags = merge(local.default_tags,
         {
-            Name = xquan-tenable.com-ix9wnsome6ui7mtoh563lg84atp4g30t
+            Name = "${replace(local.user_mail,"@","-")}-${random_string.bucket_suffix.result}"
         }
     )
 }
